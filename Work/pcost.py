@@ -3,6 +3,7 @@
 # Exercise 1.27
 
 import csv
+import sys
 
 def portfolio_cost(filename):
     total = 0
@@ -16,5 +17,10 @@ def portfolio_cost(filename):
                 print("Cannot parse", row)
     return total
 
-cost = portfolio_cost('Data/portfolio.csv')
+if len(sys.argv) == 2:
+    filename = sys.argv[1]
+else:
+    filename = 'Data/portfolio.csv'
+
+cost = portfolio_cost(filename)
 print('Total cost:', cost)
