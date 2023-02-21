@@ -2,16 +2,18 @@
 #
 # Exercise 1.27
 
+import csv
+
 def portfolio_cost(filename):
     total = 0
     with open(filename, 'rt') as f:
-        headers = next(f)
-        for row in f:
-            line = row.split(',')
+        rows = csv.reader(f)
+        headers = next(rows)
+        for row in rows:
             try:
-                total += int(line[1]) * float(line[2])
+                total += int(row[1]) * float(row[2])
             except ValueError:
-                print("Cannot parse", line)
+                print("Cannot parse", row)
     return total
 
 cost = portfolio_cost('Data/portfolio.csv')
