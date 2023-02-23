@@ -49,9 +49,3 @@ if len(sys.argv) == 2:
     filename = sys.argv[1]
 else:
     filename = "Data/portfolio.csv"
-
-portfolio = read_portfolio(filename)
-pprint(portfolio)
-
-net = calc_gain(filename)
-print(f"\n{net}")
