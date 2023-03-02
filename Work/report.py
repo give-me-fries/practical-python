@@ -1,7 +1,6 @@
 # report.py
 #
 # Exercise 2.4
-
 import csv
 import fileparse
 
