@@ -10,10 +10,12 @@ def portfolio_cost(filename):
     return sum(stock['shares'] * stock['price'] for stock in report.read_portfolio(filename))
 
 
-if len(sys.argv) == 2:
-    filename = sys.argv[1]
-else:
-    filename = 'Data/portfolio.csv'
+def main(args):
+    if len(args) != 2:
+        raise SystemExit('Usage: %s <portfolio file>' % args[0])
+    print('Total cost:', portfolio_cost(args[1]))
 
-cost = portfolio_cost(filename)
-print('Total cost:', cost)
+
+if __name__ == '__main__':
+    import sys
+    main(sys.argv)
