@@ -1,5 +1,6 @@
 import csv
 
+
 def parse_csv(
         lines,
         select=None,

@@ -1,8 +1,11 @@
-import csv
 import fileparse
+from stock import Stock
+
 
 def read_portfolio(lines):
-    return fileparse.parse_csv(lines, select=['name', 'shares', 'price'], types=[str, int, float])
+    portdicts = fileparse.parse_csv(lines, select=['name', 'shares', 'price'], types=[str, int, float])
+    portfolio = [Stock(s['name'], s['shares'], s['price']) for s in portdicts]
+    return portfolio
 
 
 def read_prices(lines):
@@ -12,9 +15,9 @@ def read_prices(lines):
 def make_report(portfolio, prices):
     rows = []
     for stock in portfolio:
-        current_price = prices[stock['name']]
-        change = current_price - stock['price']
-        summary = (stock['name'], stock['shares'], current_price, change)
+        current_price = prices[stock.name]
+        change = current_price - stock.price
+        summary = (stock.name, stock.shares, current_price, change)
         rows.append(summary)
     return rows
 

@@ -1,13 +1,8 @@
-# pcost.py
-#
-# Exercise 1.27
-import csv
-import sys
 import report
 
 
 def portfolio_cost(filename):
-    return sum(stock['shares'] * stock['price'] for stock in report.read_portfolio(filename))
+    return sum([stock.cost() for stock in report.read_portfolio(filename)])
 
 
 def main(args):
