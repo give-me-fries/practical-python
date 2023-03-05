@@ -6,7 +6,7 @@ class TableFormatter:
         Emit the table headings.
         '''
         raise NotImplementedError()
-    
+
     def row(self, rowdata):
         '''
         Emit a single row of table data.
@@ -22,7 +22,7 @@ class TextTableFormatter(TableFormatter):
             print(f'{h:>10s}', end=' ')
         print()
         print(('-'*10 + ' ')*len(headers))
-    
+
     def row(self, rowdata):
         for d in rowdata:
             print(f'{d:>10s}', end=' ')
@@ -34,7 +34,7 @@ class CSVTableFormatter(TableFormatter):
     '''
     def headings(self, headers):
         print(','.join(headers))
-    
+
     def row(self, rowdata):
         print(','.join(rowdata))
 
@@ -46,7 +46,7 @@ class HTMLTableFormatter(TableFormatter):
         print("<tr><th>", end='')
         print("</th><th>".join(headers), end='')
         print("</th></tr>")
-    
+
     def row(self, rowdata):
         print("<tr><td>", end='')
         print("</td><td>".join(rowdata), end='')
@@ -63,3 +63,10 @@ def create_formatter(name):
     else:
         raise RuntimeError(f'Unknown format {name}')
     return formatter
+
+
+def print_table(portfolio, headers, formatter):
+    formatter.headings(headers)
+    for stock in portfolio:
+        rowdata = [str(getattr(stock, name)) for name in headers]
+        formatter.row(rowdata)
