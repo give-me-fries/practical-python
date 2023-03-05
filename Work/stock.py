@@ -9,3 +9,8 @@ class Stock():
     
     def sell(self, amount):
         self.shares -= amount
+
+
+class MyStock(Stock):
+    def panic(self):
+        self.sell(self.shares)
