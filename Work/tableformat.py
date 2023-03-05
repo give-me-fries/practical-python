@@ -61,7 +61,7 @@ def create_formatter(name):
     elif name == 'html':
         formatter = HTMLTableFormatter()
     else:
-        raise RuntimeError(f'Unknown format {name}')
+        raise RuntimeError(f'Unknown table format {name}')
     return formatter
 
 
