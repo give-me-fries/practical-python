@@ -9,7 +9,6 @@ def read_portfolio(lines):
     return Portfolio(portfolio)
 
 
-
 def read_prices(lines):
     return dict(fileparse.parse_csv(lines, types=[str, float], has_headers=False))
 

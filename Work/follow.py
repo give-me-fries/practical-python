@@ -2,7 +2,6 @@
 import os
 import time
 
-
 def follow(filename):
     f = open(filename)
     f.seek(0, os.SEEK_END)   # Move file pointer 0 bytes from end of file
