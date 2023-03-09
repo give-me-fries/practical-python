@@ -14,7 +14,7 @@ def read_portfolio(filename, **opts):
                                         types=[str,int,float],
                                         **opts)
 
-    portfolio = [ Stock(**d) for d in portdicts ]
+    portfolio = [Stock(**d) for d in portdicts]
     return Portfolio(portfolio)
 
 

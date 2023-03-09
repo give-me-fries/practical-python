@@ -1,5 +1,12 @@
+# stock.py
+
+from typedproperty import String, Integer, Float
+
 class Stock():
-    __slots__ = ('name', '_shares', 'price')
+    name = String('name')
+    shares = Integer('shares')
+    price = Float('price')
+
     def __init__(self, name, shares, price):
         self.name = name
         self.shares = shares
@@ -7,16 +14,6 @@ class Stock():
 
     def __repr__(self):
         return f"Stock({self.name!r}, {self.shares!r}, {self.price!r})"
-
-    @property
-    def shares(self):
-        return self._shares
-
-    @shares.setter
-    def shares(self, amount):
-        if not isinstance(amount, int):
-            raise TypeError("Must be integer")
-        self._shares = amount
 
     @property
     def cost(self):
